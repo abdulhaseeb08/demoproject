@@ -152,10 +152,6 @@ func handleMessage(msg *gst.Message) error {
 func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	// Start the pipeline
 
-	// Due to recent changes in the bindings - the finalizers might fire on the pipeline
-	// prematurely when it's passed between scopes. So when you do this, it is safer to
-	// take a reference that you dispose of when you are done. There is an alternative
-	// to this method in other examples.
 	pipeline.Ref()
 	defer pipeline.Unref()
 
